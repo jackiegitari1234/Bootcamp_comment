@@ -9,7 +9,7 @@ def main():
 
 
     while True:
-        option = main_choice("pick a choice to proceed: \n 1. Sign up \n 2. Sign in \n 3. Quit")
+        option = main_choice("\nPick a choice to proceed: \n 1. Sign up \n 2. Sign in \n 3. Quit")
 
         if option != 1 and option != 2:
             print('Invalid choice')
@@ -32,17 +32,22 @@ def main():
             elif option == 2:
                 username = enter_detail("username")
                 password = enter_detail("password")
-                user.login(username, password)
+                logged_in_user = user.login(username, password)
           
-                while True:
-                    action = main_choice('Pick an action:\n 1. Post comment 2. View comments')
+                if logged_in_user != None:
+                    while True:
+                        option = main_choice('\nPick an action:\n 1. Post comment 2. View comments')
 
-                    if option != 1 and option != 2:
-                        print('Invalid choice')
+                        if option != 1 and option != 2:
+                            print('Invalid choice')
 
-                    else:                
-                        post_comment()
-                        break
+                        else:                
+                            post_comment()
+                            break
+                else:
+                    print("\nError logging in")
+                    break
+                
 
 
 def main_choice(message):
