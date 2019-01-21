@@ -21,9 +21,6 @@ def main():
             user.save()
 
 
-        
-
-
 def main_choice():
     print("pick a choice to proceed: \n 1. Sign up \n 2. Quit")
 
