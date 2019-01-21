@@ -8,17 +8,19 @@ class User():
 
     @staticmethod 
     def login(username, password):
+
+        if len(users) == 0:
+            return None
+
+        user = [user for user in users if user['username'] == username][0]
         
-        for user in users: 
-            # user exists
-            if user["username"] == username:
-                
-                if user["password"] == password:
-                    print("Signed in as {}".format(user["username"]))
-                else:
-                    print("Password for {} is incorrect".format(user["username"]))
-            else:
-                print("User does not exist")
+        if user["password"] == password:
+            print("Signed in as {}".format(user["username"]))
+            return user
+        else:
+            print("Password for {} is incorrect".format(user["username"]))
+            return None
+
 
 
             
